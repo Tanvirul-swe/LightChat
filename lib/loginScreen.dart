@@ -8,6 +8,9 @@ import 'constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:toast/toast.dart';
+import 'package:toast/toast.dart';
+
+
 class LoginScreen extends StatefulWidget {
   static const String id = 'LoginScreen';
   @override
@@ -78,13 +81,41 @@ class _LoginScreenState extends State<LoginScreen> {
                          showspinner=true;
                        });
 
-                     final user = await auth.signInWithEmailAndPassword(email: email, password: password);
-                        if(user!=null){
-                          Navigator.pushNamed(context, ChatScreen.id);
-                        }
+
+                       try {
+
+                         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+                       }
+                         on FirebaseAuthException catch (e) {
+
+                         if (e.code == 'user-not-found') {
+                           // print('No user found for that email.');
+                           setState(() {
+                             Toast.show("Wrong Email", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+                             showspinner=false;
+                           });
+                         } else if (e.code == 'wrong-password') {
+                           // print('Wrong password provided for that user.');
+                           setState(() {
+
+                            Toast.show("Wrong Password", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+                             showspinner=false;
+                           });
+                         }
+
+                       }
+                        final user = await auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+
+                       if(user!=null){
+                              Navigator.pushNamed(context, ChatScreen.id);
+                             Toast.show("Login Successful", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+                       }
+
                         setState(() {
                           showspinner=false;
                         });
+
                    },
                    ),
                 ],
