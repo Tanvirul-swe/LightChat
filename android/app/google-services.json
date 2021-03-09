@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "6461209820",
+    "project_id": "light-chat-93cb7",
+    "storage_bucket": "light-chat-93cb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6461209820:android:119354cb2ce66af7974819",
+        "android_client_info": {
+          "package_name": "com.example.chatbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6461209820-sb9sioc2gghjqd7avril1dk9hbcacnce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfDLMEdCr-TNULYPy6m49Q0EV1h3OYObg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6461209820-sb9sioc2gghjqd7avril1dk9hbcacnce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
